@@ -107,11 +107,11 @@ def addNoISAOptions(parser):
     parser.add_argument("--sys-voltage", action="store", type=str,
                         default='1.0V',
                         help="""Top-level voltage for blocks running at system
-                        power supply""")
+                      power supply""")
     parser.add_argument("--sys-clock", action="store", type=str,
                         default='1GHz',
                         help="""Top-level clock for blocks running at system
-                        speed""")
+                      speed""")
 
     # Memory Options
     parser.add_argument("--list-mem-types",
@@ -130,6 +130,7 @@ def addNoISAOptions(parser):
                         help="Enable low-power states in DRAMInterface")
     parser.add_argument("--mem-channels-intlv", type=int, default=0,
                         help="Memory channels interleave")
+
     parser.add_argument("--memchecker", action="store_true")
 
     # Cache Options
@@ -319,9 +320,6 @@ def addCommonOptions(parser):
                         help="""Data dependency trace file input to
                       Elastic Trace probe in a capture simulation and
                       Trace CPU in a replay simulation""", default="")
-
-    parser.add_argument("-l", "--lpae", action="store_true")
-    parser.add_argument("-V", "--virtualisation", action="store_true")
 
     # dist-gem5 options
     parser.add_argument("--dist", action="store_true",
@@ -554,9 +552,6 @@ def addFSOptions(parser):
             help="Specifies device tree blob file to use with device-tree-"
             "enabled kernels")
         parser.add_argument(
-            "--enable-security-extensions", action="store_true",
-            help="Turn on the ARM Security Extensions")
-        parser.add_argument(
             "--enable-context-switch-stats-dump", action="store_true",
             help="Enable stats dump at context "
             "switches and dump tasks file (required for Streamline)")
@@ -593,3 +588,7 @@ def addFSOptions(parser):
     parser.add_argument(
         "--command-line-file", action="store", default=None, type=str,
         help="File with a template for the kernel command line")
+
+    # Debug option
+    parser.add_argument("--wait-gdb", default=False, action='store_true',
+                        help="Wait for remote GDB to connect.")

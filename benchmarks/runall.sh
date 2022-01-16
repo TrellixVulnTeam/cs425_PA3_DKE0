@@ -2,7 +2,7 @@
 
 export GEM5_DIR=../gem5
 
-MAX_INSTS=150000000
+MAX_INSTS=100000000
 
 if [ $1 -eq 1 ]
 then
